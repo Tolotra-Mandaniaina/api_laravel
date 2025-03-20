@@ -21,8 +21,8 @@ return new class extends Migration
             $table->timestamps();
     
             // Définir les clés étrangères
-            $table->foreign('personne_id')->references('id')->on('personnes')->onDelete('cascade');
-            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('cascade');
+            $table->foreign('personne_id')->references('id')->on('personnes')->onDelete('restrict');
+            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('restrict');
         });
     }
     

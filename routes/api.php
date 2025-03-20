@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Activite;
+use App\Models\Organisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ActiviteController;
 use App\Http\Controllers\PersonneController;
+use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\FichePresenceController;
 
 /*
@@ -23,16 +25,28 @@ use App\Http\Controllers\FichePresenceController;
     return $request->user();
 }); 
 */
+
+
+//ROUTE DES PERSONNES
 Route::post("/personnes",[PersonneController::class, 'createPersonne']);
-Route::middleware(['auth:sanctum', 'role:admin'])->get("/personnes",[PersonneController::class, 'ListPersonne']);
+Route::get("/personnes",[PersonneController::class, 'ListPersonne']);
 Route::get("/personnes/{id}",[PersonneController::class, 'getPersonne']);
 Route::delete("/personnes/{id}",[PersonneController::class, 'deletePersonne']);
 Route::put("/personnes/{id}",[PersonneController::class, 'updatePersonne']);
+Route::post('/personnes/{personneId}/assigner-fonction', [PersonneController::class, 'assignerFonction']);
 
+
+
+//ROUTE DES ACTIVITES
 Route::post("/activites",[ActiviteController::class, 'createActivite']);
 Route::post('/activites/{activiteId}/presences', [FichePresenceController::class, 'assignPresence']);
 
+//ROUTE DES ORGANISATIONS
+Route::post("/organisations", [OrganisationController::class, 'createOrganisation']);
+Route::get("/organisations", [OrganisationController::class, 'ListOrganisations']);
 
+
+//ROUTE DES USERS
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 

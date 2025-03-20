@@ -17,8 +17,6 @@ return new class extends Migration
             $table->boolean('psh');
             $table->string('email');
             $table->string('fb');
-            $table->string('fonction');
-            $table->string('organisation');
             $table->string('region');
             $table->string('codeRegion');
             $table->string('district');

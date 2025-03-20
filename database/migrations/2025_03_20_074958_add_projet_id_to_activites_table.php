@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('projet_id');  
                 
                 // Ajoute la contrainte de clé étrangère
-                $table->foreign('projet_id')->references('id')->on('projets')->onDelete('cascade');
+                $table->foreign('projet_id')->references('id')->on('projets')->onDelete('restrict');
         });
     }
 
