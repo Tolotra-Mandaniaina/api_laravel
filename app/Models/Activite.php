@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+
 
 class Activite extends Model
 {
@@ -22,6 +24,11 @@ class Activite extends Model
                 ->withPivot('est_present')
                 ->withTimestamps();
     }
+     // Définir la relation avec le modèle User
+     public function user()
+     {
+         return $this->belongsTo(User::class);
+     }
 
     
 

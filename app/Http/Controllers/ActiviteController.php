@@ -32,4 +32,47 @@ class ActiviteController extends Controller
             "activite" => $activiteCreated
         ], 201); // Code de statut 201 pour "Créé avec succès"
     }
+
+    public function Listactivites()
+    {
+        $activites = Activite::all();
+
+        return response()->json([
+            'activites' => $activites
+        ], 200);
+    }
+
+    public function ListactivitesByUser(Request $request)
+    {
+        // Vérification que l'utilisateur est authentifié
+        $user = auth()->user(); // Récupérer l'utilisateur authentifié (via le token)
+
+        // Récupérer les activités associées à l'utilisateur
+        $activites = Activite::where('user_id', $user->id)->get();
+
+        // Retourner la réponse JSON avec la liste des activités
+        return response()->json([
+            'activites' => $activites
+        ], 200);
+    }
+
+
+    public function getActivite($id)
+    {
+        // Rechercher l'activité par ID
+        $activite = Activite::find($id);
+
+        // Vérifier si l'activité existe
+        if (!$activite) {
+            return response()->json([
+                "message" => "Activité non trouvée"
+            ], 404);
+        }
+
+        // Retourner l'activité en format JSON
+        return response()->json([
+            "activite" => $activite
+        ], 200);
+    }
+
 }

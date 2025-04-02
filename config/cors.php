@@ -25,7 +25,7 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['Content-Range'], // Ajouter Content-Range ici
 
     'max_age' => 0,
 

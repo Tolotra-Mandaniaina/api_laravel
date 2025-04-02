@@ -9,7 +9,7 @@ class Personne extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["nom", "age", "tel", "psh", "email", "fb", "region", "codeRegion", "district", "codeDistrict", "commune", "codeCommune","organisation_id"];
+    protected $fillable = ["nom", "age", "tel", "psh", "email", "fb", "region", "codeRegion", "district", "codeDistrict", "commune", "codeCommune","organisation_id","fonction_fiche"];
 
      public function activites()
         {
