@@ -115,12 +115,13 @@ public function getPersonne($id)
             'fb' => $personne->fb,
             'fonction_fiche' => $personne->fonction_fiche,
             'organisation' => $personne->organisation ? $personne->organisation->sigle : null, // Retourne le nom au lieu de ID
+            'organisation_id' => $personne->organisation_id,
             'region' => $personne->region,
             'codeRegion' => $personne->codeRegion,
             'district' => $personne->district,
             'codeDistrict' => $personne->codeDistrict,
             'commune' => $personne->commune,
-            'codeCommune' => $personne->codeCommune,
+            'codeCommune' => $personne->CodeCommune,
             'activites' => $personne->activites, // Inclut les activités
             'fonctions' => $personne->fonctions // Inclut les fonctions
         ]
